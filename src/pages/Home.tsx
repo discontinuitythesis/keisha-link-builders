@@ -12,6 +12,7 @@ import { Standards } from "../sections/Standards";
 import { FAQ } from "../sections/FAQ";
 import { Founder } from "../sections/Founder";
 import { Contact } from "../sections/Contact";
+import { WhatsAppButton } from "../components/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
         <Founder />
         <Contact />
       </main>
+      <WhatsAppButton />
     </div>
   );
 }
