@@ -8,7 +8,11 @@ export const SITE = {
     "https://wa.me/639985524212?text=" +
     enc("Hi KeiSha, I found your website and would like to talk about link building."),
   whatsappDisplay: "+63 998 552 4212",
-  linkedin: "https://www.linkedin.com/in/keisha-link-builders-605314379",
+  linkedin: "https://www.linkedin.com/company/144148202/",
+  founders: {
+    shalom: { name: "Shalom Agtagma", site: "https://shalomagtagma.com/", linkedin: "https://www.linkedin.com/in/shalomagtagma/" },
+    kei: { name: "Krizza \u201cKei\u201d Cruz", short: "Kei Cruz", linkedin: "https://www.linkedin.com/in/krizzacruz/" },
+  },
   founderSite: "https://shalomagtagma.com/",
   mailtoPricing:
     `mailto:${EMAIL}?subject=` +

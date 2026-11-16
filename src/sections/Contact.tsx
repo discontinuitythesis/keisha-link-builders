@@ -71,6 +71,15 @@ export function Contact() {
               className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
             >
               Shalom Agtagma
+            </a>{" "}
+            and{" "}
+            <a
+              href={SITE.founders.kei.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white"
+            >
+              {SITE.founders.kei.short}
             </a>
           </p>
         </div>

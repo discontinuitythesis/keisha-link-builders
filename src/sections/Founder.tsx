@@ -1,11 +1,32 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Linkedin } from "lucide-react";
 import { Reveal } from "../components/Reveal";
 import { SectionHead } from "../components/SectionHead";
 import { SITE } from "../lib/site";
 
+const { shalom, kei } = SITE.founders;
+
+const FOUNDERS = [
+  {
+    name: shalom.name,
+    role: "Co-founder",
+    note: "Former SEO Project Manager, then Senior Operations and Program Manager, at MADX Digital in London.",
+    href: shalom.site,
+    linkLabel: "shalomagtagma.com",
+    linkedin: shalom.linkedin,
+  },
+  {
+    name: kei.name,
+    role: "Co-founder",
+    note: "Former Backlink Manager at MADX Digital in London.",
+    href: kei.linkedin,
+    linkLabel: "LinkedIn",
+    linkedin: kei.linkedin,
+  },
+];
+
 export function Founder() {
   return (
-    <section className="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
+    <section id="founders" className="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
       <div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         <Reveal className="order-2 lg:order-1">
           <div className="relative mx-auto w-full max-w-sm">
@@ -32,19 +53,10 @@ export function Founder() {
           <Reveal delay={0.1}>
             <div className="mt-8 space-y-5 text-base leading-relaxed text-[#4a5672] md:text-lg">
               <p>
-                KeiSha Link Builders was co-founded by{" "}
-                <a
-                  href={SITE.founderSite}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group inline-flex items-center gap-1 font-semibold text-[#0b2b5e] underline decoration-[#0a5bc4]/50 decoration-2 underline-offset-4 transition-colors hover:text-[#0a5bc4]"
-                >
-                  Shalom Agtagma
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-                , who spent two and a half years as SEO Project Manager and then
-                Senior Operations and Program Manager at MADX Digital in London,
-                growing the team to around 30 people.
+                KeiSha Link Builders was co-founded by Shalom Agtagma and Kei
+                Cruz, who both worked at MADX Digital, a London SEO agency.
+                Shalom ran operations and grew the team to around 30 people.
+                Kei managed backlinks.
               </p>
               <p>
                 That background is the point. Link building fails on process:
@@ -55,6 +67,41 @@ export function Founder() {
               </p>
             </div>
           </Reveal>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {FOUNDERS.map((f, i) => (
+              <Reveal key={f.name} delay={0.15 + i * 0.08} className="h-full">
+                <div className="flex h-full flex-col rounded-xl border border-[#dbe3ef] border-t-4 border-t-[#0a5bc4] bg-white p-5">
+                  <p className="font-display text-lg font-bold text-[#10213f]">{f.name}</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0a5bc4]">{f.role}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-[#4a5672]">{f.note}</p>
+                  <div className="mt-auto flex items-center gap-4 pt-4 text-sm font-semibold">
+                    <a
+                      href={f.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 text-[#0b2b5e] hover:text-[#0a5bc4]"
+                    >
+                      {f.linkLabel === "LinkedIn" ? <Linkedin className="h-4 w-4" /> : null}
+                      {f.linkLabel}
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
+                    {f.linkLabel !== "LinkedIn" && (
+                      <a
+                        href={f.linkedin}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${f.name} on LinkedIn`}
+                        className="text-[#0b2b5e] hover:text-[#0a5bc4]"
+                      >
+                        <Linkedin className="h-4 w-4" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
 

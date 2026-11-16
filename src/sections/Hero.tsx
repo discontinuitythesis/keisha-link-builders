@@ -132,7 +132,26 @@ export function Hero() {
   return (
     <section id="top" className="relative flex min-h-svh flex-col overflow-hidden bg-gradient-to-b from-white to-[#f4f7fb]">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_50%_at_80%_15%,rgba(10,91,196,0.10),transparent)]" />
-      <LinkGraph />
+      <motion.img
+        src="keisha-hero.webp"
+        alt=""
+        aria-hidden
+        width={1536}
+        height={1024}
+        fetchPriority="high"
+        style={{
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, #000 35%)",
+          maskImage: "linear-gradient(to right, transparent 0%, #000 35%)",
+        }}
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        className="pointer-events-none absolute inset-y-0 right-0 hidden h-full w-1/2 object-cover object-[88%_50%] lg:block xl:w-[56%]"
+      />
+      <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-[#f8fafd] from-45% via-[#f8fafd]/60 via-[62%] to-transparent lg:block" />
+      <div className="lg:hidden">
+        <LinkGraph />
+      </div>
 
       <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-5 pb-16 pt-32 md:px-8">
         <motion.p
@@ -157,7 +176,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9 }}
-          className="mt-7 max-w-2xl text-base leading-relaxed text-[#4a5672] md:text-lg"
+          className="mt-7 max-w-xl text-base leading-relaxed text-[#4a5672] md:text-lg"
         >
           Niche edits, guest posts and listicles, backed by free-to-post
           support. Run by co-founders and an in-house team with no
@@ -188,11 +207,23 @@ export function Hero() {
           </a>
         </motion.div>
 
+        <motion.img
+          src="keisha-hero.webp"
+          alt=""
+          aria-hidden
+          width={1536}
+          height={1024}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 1.15 }}
+          className="pointer-events-none mt-10 aspect-[4/3] w-full rounded-2xl object-cover object-[85%_50%] lg:hidden"
+        />
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.3 }}
-          className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[#dbe3ef] bg-[#dbe3ef] shadow-[0_20px_50px_-30px_rgba(11,43,94,0.4)] md:grid-cols-4"
+          className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[#dbe3ef] bg-[#dbe3ef] shadow-[0_20px_50px_-30px_rgba(11,43,94,0.4)] md:grid-cols-4"
         >
           {CHIPS.map((c) => (
             <div key={c.k} className="bg-white px-5 py-5 md:px-6">
