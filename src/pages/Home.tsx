@@ -1,6 +1,7 @@
 import { Nav } from "../sections/Nav";
 import { Hero } from "../sections/Hero";
 import { Marquee } from "../sections/Marquee";
+import { Explainer } from "../sections/Explainer";
 import { About } from "../sections/About";
 import { Services } from "../sections/Services";
 import { Clients } from "../sections/Clients";
@@ -21,6 +22,7 @@ export default function Home() {
       <main>
         <Hero />
         <Marquee />
+        <Explainer />
         <About />
         <Services />
         <Clients />
