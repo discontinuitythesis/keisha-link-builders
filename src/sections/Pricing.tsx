@@ -1,112 +1,55 @@
+import { Mail, MessageCircle } from "lucide-react";
 import { Reveal } from "../components/Reveal";
+import { Card, SectionHead } from "../components/SectionHead";
 import { SITE } from "../lib/site";
-import { ArrowUpRight } from "lucide-react";
 
-const ROWS = [
-  { name: "Guest post (content included)", tiers: ["from $120", "from $220", "from $380"] },
-  { name: "Link insertion", tiers: ["from $90", "from $170", "from $300"] },
-  { name: "Brand mention (unlinked → linked)", tiers: ["from $60", "from $110", "from $200"] },
-];
-
-const EXTRAS = [
-  {
-    title: "Retainer",
-    big: "From $1,500 / month",
-    desc: "Example: 10 mixed placements per month, DR 30+, monthly report sheet.",
-  },
-  {
-    title: "White-label",
-    big: "Your clients never see us",
-    desc: "Agencies get unbranded reports and a dedicated contact.",
-  },
-  {
-    title: "Volume discounts",
-    big: "From 20 placements / month",
-    desc: "Tiered pricing for larger orders. Ask for the rate card.",
-  },
+const MODEL = [
+  { title: "Service mix", desc: "Paid packages plus free-to-post support." },
+  { title: "Pricing drivers", desc: "DR, traffic, niche and language." },
+  { title: "Order economics", desc: "Bulk discounts and special pricing considerations." },
+  { title: "Change control", desc: "Scope or qualification changes require formal approval." },
+  { title: "Payment", desc: "Methods and processing fees agreed in advance." },
 ];
 
 export function Pricing() {
   return (
-    <section id="pricing" className="border-y border-[#23262b] bg-[#0e1013]">
-      <div className="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-36">
-        <Reveal>
-          <p className="mb-4 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.25em] text-[#9ba0a8]">
-            <span className="h-px w-10 bg-[#c8f04b]" /> Indicative pricing
-          </p>
-          <h2 className="font-display max-w-3xl text-4xl font-bold tracking-tight md:text-6xl">
-            Priced by DR.{" "}
-            <span className="font-serif-i font-normal text-[#c8f04b]">
-              No hidden markups.
-            </span>
-          </h2>
-          <p className="mt-5 max-w-2xl text-[#9ba0a8] md:text-lg">
-            Prices are per placement in USD and include prospecting, outreach,
-            content where applicable, and reporting. Request the rate card for
-            the full list, niche pricing and volume discounts.
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.15}>
-          <div className="mt-14 overflow-hidden rounded-2xl border border-[#23262b]">
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[640px] text-left">
-                <thead>
-                  <tr className="bg-[#c8f04b] text-[#0b0c0e]">
-                    <th className="px-6 py-4 font-display text-sm font-semibold">Placement</th>
-                    <th className="px-6 py-4 font-display text-sm font-semibold">DR 20–39</th>
-                    <th className="px-6 py-4 font-display text-sm font-semibold">DR 40–59</th>
-                    <th className="px-6 py-4 font-display text-sm font-semibold">DR 60+</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {ROWS.map((r, i) => (
-                    <tr
-                      key={r.name}
-                      className={`transition-colors hover:bg-[#15181c] ${
-                        i % 2 === 0 ? "bg-[#101215]" : "bg-[#0c0e11]"
-                      }`}
-                    >
-                      <td className="px-6 py-5 text-sm font-medium text-[#f2f1ec]">{r.name}</td>
-                      {r.tiers.map((t) => (
-                        <td key={t} className="px-6 py-5 font-display text-sm font-semibold text-[#c8f04b]">
-                          {t}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+    <section id="pricing" className="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
+      <SectionHead
+        eyebrow="Commercial model and payment terms"
+        title="A commercial model built around qualification"
+        intro="Every campaign is priced to its brief, so we share pricing directly rather than publishing a rate card."
+      />
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {MODEL.map((m, i) => (
+          <Reveal key={m.title} delay={(i % 3) * 0.08} className="h-full">
+            <Card title={m.title}>{m.desc}</Card>
+          </Reveal>
+        ))}
+        <Reveal delay={0.16} className="h-full">
+          <div className="flex h-full flex-col justify-between rounded-xl bg-[#0b2b5e] p-6 text-white">
+            <div>
+              <h3 className="font-display text-lg font-bold uppercase tracking-tight">For pricing, contact us</h3>
+              <p className="mt-2 text-sm leading-relaxed text-[#c8d6ec]">
+                Tell us your niche, target DR and traffic range, language and monthly volume.
+              </p>
+            </div>
+            <div className="mt-5 flex flex-col gap-2.5">
+              <a
+                href={SITE.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-[#0b2b5e] transition-colors hover:bg-[#e8f0fc]"
+              >
+                <MessageCircle className="h-4 w-4" /> WhatsApp {SITE.whatsappDisplay}
+              </a>
+              <a
+                href={SITE.mailtoPricing}
+                className="inline-flex items-center gap-2 break-all rounded-full border border-white/25 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white"
+              >
+                <Mail className="h-4 w-4 shrink-0" /> {SITE.email}
+              </a>
             </div>
           </div>
-        </Reveal>
-
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {EXTRAS.map((e, i) => (
-            <Reveal key={e.title} delay={0.1 + i * 0.1} className="h-full">
-              <div className="h-full rounded-2xl border border-[#23262b] bg-[#101215] p-7 transition-colors hover:border-[#c8f04b]/40">
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#9ba0a8]">
-                  {e.title}
-                </p>
-                <p className="font-display mt-3 text-xl font-semibold text-[#f2f1ec]">
-                  {e.big}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-[#9ba0a8]">{e.desc}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal delay={0.2}>
-          <p className="mt-8 rounded-xl border border-[#2c3036] bg-[#101215] px-6 py-4 text-sm text-[#9ba0a8]">
-            <span className="font-semibold text-[#f2f1ec]">Note:</span> minimum
-            organic traffic thresholds apply to every site we place on. Casino,
-            adult, CBD and crypto niches are priced separately.{" "}
-            <a href={SITE.mailtoRateCard} className="group inline-flex items-center gap-1 font-semibold text-[#c8f04b]">
-              Request the full rate card
-              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-          </p>
         </Reveal>
       </div>
     </section>

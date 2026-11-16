@@ -1,65 +1,78 @@
-import { TrendingUp, Crosshair, ShieldX, ListChecks, ShieldCheck, FileSpreadsheet } from "lucide-react";
 import { Reveal } from "../components/Reveal";
+import { Card, SectionHead } from "../components/SectionHead";
 
-const ITEMS = [
+const CHECKPOINTS = [
+  { n: "01", title: "Domain qualification", desc: "DR, traffic, relevance and site quality." },
+  { n: "02", title: "Placement + content", desc: "Page relevance, mentions, anchor and editorial fit." },
+  { n: "03", title: "Final verification", desc: "Live URL, destination, specs and documentation." },
+];
+
+const POLICY = [
   {
-    icon: TrendingUp,
-    title: "Real organic traffic",
-    desc: "We check organic traffic and keyword trends, not just DR. Sites with inflated metrics and no rankings are rejected.",
+    title: "Qualification signals",
+    desc: "Domain Rating and range, organic traffic and its 6-month trend, topical relevance, backlink profile and traffic quality.",
+  },
+  { title: "Traffic tiers", desc: "Opportunities are tiered by DR and traffic so each placement matches the campaign goal." },
+  {
+    title: "We address",
+    desc: "Removed, broken or altered links, anchor or destination changes, and publisher removals.",
+  },
+  { title: "We define", desc: "Evidence requirements, time limits, exclusions and measurement rules.", tone: "navy" as const },
+  {
+    title: "We do not guarantee",
+    desc: "Indexing, rankings, or publisher permanence beyond the agreed window.",
+    tone: "navy" as const,
   },
   {
-    icon: Crosshair,
-    title: "Niche relevance",
-    desc: 'The site, the page and the anchor have to make sense for your topic. No generic "write for us" farms.',
-  },
-  {
-    icon: ShieldX,
-    title: "No PBNs, no link farms",
-    desc: "Every site has a real audience and real editorial ownership. We do not run or buy from private blog networks.",
-  },
-  {
-    icon: ListChecks,
-    title: "Approve before you pay",
-    desc: "You see the prospect list with DR and traffic screenshots before we place anything. Swap out any site you do not like.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "6-month live-link guarantee",
-    desc: "If a link is removed or set to no-follow within six months, we replace it at no charge.",
-  },
-  {
-    icon: FileSpreadsheet,
-    title: "One report sheet",
-    desc: "A shared Google Sheet with every live URL, anchor, target page, DR, traffic and date. Same format every month.",
+    title: "Replacement window",
+    desc: "Replacement is offered within the defined period, held to the same qualification bar.",
+    tone: "navy" as const,
   },
 ];
 
 export function Quality() {
   return (
-    <section id="quality" className="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-36">
-      <Reveal>
-        <p className="mb-4 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.25em] text-[#9ba0a8]">
-          <span className="h-px w-10 bg-[#c8f04b]" /> Quality guardrails
-        </p>
-        <h2 className="font-display max-w-3xl text-4xl font-bold tracking-tight md:text-6xl">
-          What every placement{" "}
-          <span className="font-serif-i font-normal text-[#c8f04b]">has to pass</span>
-        </h2>
-      </Reveal>
+    <section id="quality" className="mx-auto max-w-7xl px-5 py-24 md:px-8 md:py-32">
+      <SectionHead eyebrow="Our quality assurance process" title="Three checkpoints. One consistent standard." />
 
-      <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-[#23262b] bg-[#23262b] sm:grid-cols-2 lg:grid-cols-3">
-        {ITEMS.map((item, i) => (
-          <Reveal key={item.title} delay={(i % 3) * 0.1} className="h-full">
-            <div className="group flex h-full flex-col bg-[#0e1013] p-8 transition-colors duration-500 hover:bg-[#12150f]">
-              <span className="font-display text-sm font-semibold text-[#3d4148] transition-colors group-hover:text-[#c8f04b]">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <item.icon className="mt-5 h-6 w-6 text-[#c8f04b]" />
-              <h3 className="font-display mt-4 text-lg font-semibold">{item.title}</h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-[#9ba0a8]">{item.desc}</p>
+      <div className="relative mt-12 grid gap-5 md:grid-cols-3">
+        <div className="absolute left-[16%] right-[16%] top-1/2 hidden h-0.5 -translate-y-1/2 bg-[#c5d3e8] md:block" />
+        {CHECKPOINTS.map((c, i) => (
+          <Reveal key={c.n} delay={i * 0.1} className="relative h-full">
+            <div
+              className={`flex h-full flex-col items-center justify-center rounded-2xl px-6 py-9 text-center text-white shadow-[0_20px_50px_-28px_rgba(11,43,94,0.9)] ${
+                i === 2 ? "bg-[#0b2b5e]" : "bg-[#0a5bc4]"
+              }`}
+            >
+              <p className="font-display text-sm font-bold uppercase tracking-[0.18em] text-[#c8dcf8]">
+                {c.n} &nbsp;{c.title}
+              </p>
+              <p className="mt-3 font-semibold">{c.desc}</p>
             </div>
           </Reveal>
         ))}
+      </div>
+      <Reveal>
+        <p className="mt-8 text-center font-semibold text-[#0a5bc4]">
+          Optional client-side QA before publisher payment adds another layer of control.
+        </p>
+      </Reveal>
+
+      <div id="policy" className="mt-24">
+        <SectionHead
+          eyebrow="Standards and policy"
+          title="Qualification standards and replacement policy"
+          intro="Every opportunity is assessed before placement, and the policy is clear when something changes."
+        />
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {POLICY.map((p, i) => (
+            <Reveal key={p.title} delay={(i % 3) * 0.08} className="h-full">
+              <Card title={p.title} tone={p.tone}>
+                {p.desc}
+              </Card>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

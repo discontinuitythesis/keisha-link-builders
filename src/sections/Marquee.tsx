@@ -1,26 +1,26 @@
 const ITEMS = [
+  "Niche edits",
   "Guest posts",
-  "Link insertions",
-  "Brand mentions",
-  "DR 20–80+",
-  "White-label",
-  "Real organic traffic",
-  "No PBNs",
-  "6-month guarantee",
+  "Listicles",
+  "Free-to-post support",
+  "White-label delivery",
+  "In-house team",
+  "Three-point QA",
+  "Verified placements",
 ];
 
 export function Marquee() {
   const row = [...ITEMS, ...ITEMS];
   return (
-    <div className="relative overflow-hidden border-y border-[#23262b] bg-[#0e1013] py-5">
+    <div className="relative overflow-hidden bg-[#0b2b5e] py-5" aria-hidden>
       <div className="marquee-track flex w-max items-center gap-10 pr-10">
         {row.map((item, i) => (
           <span
             key={i}
-            className="flex items-center gap-10 whitespace-nowrap font-display text-sm font-medium uppercase tracking-[0.25em] text-[#6d727b]"
+            className="flex items-center gap-10 whitespace-nowrap font-display text-sm font-semibold uppercase tracking-[0.22em] text-[#c8d6ec]"
           >
             {item}
-            <span className="text-[#c8f04b]">✦</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-[#5d9cf0]" />
           </span>
         ))}
       </div>
